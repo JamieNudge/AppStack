@@ -29,36 +29,34 @@ struct DesktopTotemView: View {
             .padding(.vertical, 4)
             
             // Totem pole items
-            ScrollView {
-                VStack(spacing: 2) {
-                    ForEach(Array(tracker.recentFiles.enumerated()), id: \.element.id) { index, item in
-                        DesktopTotemItemView(
-                            item: item,
-                            rank: index + 1,
-                            hasNote: tracker.hasNote(for: item),
-                            onOpen: {
-                                if let note = tracker.note(for: item) {
-                                    activeNoteText = note
-                                    isShowingActiveNote = true
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                        // Hide note after a short delay
-                                        if activeNoteText == note {
-                                            isShowingActiveNote = false
-                                        }
+            VStack(spacing: 2) {
+                ForEach(Array(tracker.recentFiles.enumerated()), id: \.element.id) { index, item in
+                    DesktopTotemItemView(
+                        item: item,
+                        rank: index + 1,
+                        hasNote: tracker.hasNote(for: item),
+                        onOpen: {
+                            if let note = tracker.note(for: item) {
+                                activeNoteText = note
+                                isShowingActiveNote = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    // Hide note after a short delay
+                                    if activeNoteText == note {
+                                        isShowingActiveNote = false
                                     }
                                 }
-                                tracker.openFile(item)
-                            },
-                            onEditNote: {
-                                noteEditorItem = item
-                                noteEditorText = tracker.note(for: item) ?? ""
-                                isShowingNoteEditor = true
                             }
-                        )
-                    }
+                            tracker.openFile(item)
+                        },
+                        onEditNote: {
+                            noteEditorItem = item
+                            noteEditorText = tracker.note(for: item) ?? ""
+                            isShowingNoteEditor = true
+                        }
+                    )
                 }
-                .padding(.vertical, 4)
             }
+            .padding(.vertical, 4)
             .background(Color.clear)
             
             // Totem Base
