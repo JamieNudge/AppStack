@@ -1,6 +1,6 @@
 # AppStack
 
-A macOS iOS application built with Swift and UIKit.
+An iOS application built with Swift and UIKit.
 
 ## Overview
 
