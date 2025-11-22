@@ -96,7 +96,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             // Force the window back to the very front
-            DispatchQueue.main.async {
+            // Add a small delay to ensure the other app finishes activating first
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 window.orderFrontRegardless()
             }
         }
@@ -156,9 +157,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             // Set initial level based on saved preference
             if alwaysOnTop {
-                window.level = .statusBar
+                window.level = .floating
                 window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
-                print("   Set to statusBar (pinned)")
+                print("   Set to floating (pinned)")
             } else {
                 window.level = .normal
                 window.collectionBehavior = [.canJoinAllSpaces]

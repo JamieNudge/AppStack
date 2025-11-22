@@ -59,6 +59,8 @@ struct DesktopTotemView: View {
             .padding(.vertical, 4)
             .background(Color.clear)
             
+            Spacer()
+            
             // Totem Base
             VStack(spacing: 4) {
                 // Always on Top toggle
@@ -138,6 +140,7 @@ struct DesktopTotemView: View {
             .padding(.vertical, 8)
             .background(Color.clear)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             LinearGradient(
                 colors: [
