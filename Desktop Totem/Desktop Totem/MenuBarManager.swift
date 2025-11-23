@@ -15,13 +15,17 @@ class MenuBarManager {
     var eventMonitor: Any?
     
     func setupMenuBar() {
-        // Create status bar item with icon
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        // Create status bar item with icon (square length keeps the icon a sensible size)
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusItem?.isVisible = true
         
         if let button = statusItem?.button {
-            // Use a stack-of-books style icon to suggest an "app stack"
-            button.title = "📚"
+            // Use the app's icon in the menu bar for visual consistency
+            button.image = NSApp.applicationIconImage
+            // Explicitly size the image so it doesn't appear oversized in the menu bar
+            button.image?.size = NSSize(width: 18, height: 18)
+            button.imagePosition = .imageOnly
+            button.imageScaling = .scaleProportionallyDown
             button.action = #selector(togglePopover)
             button.target = self
             button.isEnabled = true
