@@ -111,7 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             defer: false
         )
         window.center()
-        window.title = "Welcome to AppStack"
+        window.title = "Welcome to Desktop Totem"
         window.isReleasedWhenClosed = false
         window.level = .floating
         window.contentView = NSHostingView(
@@ -149,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 backing: .buffered,
                 defer: false
             )
-            window.title = "AppStack"
+            window.title = "Desktop Totem"
             window.contentView = NSHostingView(rootView: DesktopTotemView())
             window.isReleasedWhenClosed = false
             

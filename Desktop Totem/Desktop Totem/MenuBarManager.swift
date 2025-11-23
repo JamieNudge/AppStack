@@ -26,9 +26,9 @@ class MenuBarManager {
             button.target = self
             button.isEnabled = true
             // Accessibility: make the menu bar icon discoverable to VoiceOver
-            button.toolTip = "AppStack — your most-used apps"
-            button.setAccessibilityLabel("AppStack")
-            button.setAccessibilityHelp("Opens the AppStack totem")
+            button.toolTip = "Desktop Totem — your most-used apps"
+            button.setAccessibilityLabel("Desktop Totem")
+            button.setAccessibilityHelp("Opens the Desktop Totem totem")
         }
         
         // Create popover with TotemView

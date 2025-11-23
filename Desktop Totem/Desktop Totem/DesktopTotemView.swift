@@ -19,7 +19,7 @@ struct DesktopTotemView: View {
     
     var body: some View {
         VStack(spacing: 4) {
-            // Top cap with AppStack icon
+            // Top cap with Desktop Totem icon (decorative only)
             VStack(spacing: 2) {
                 Text("📚")
                     .font(.system(size: 46))
@@ -27,6 +27,7 @@ struct DesktopTotemView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 4)
+            .accessibilityHidden(true) // Don't trap VoiceOver focus on the icon
             
             // Totem pole items
             VStack(spacing: 2) {
@@ -56,6 +57,7 @@ struct DesktopTotemView: View {
                     )
                 }
             }
+            .accessibilityElement(children: .contain) // Expose each row to VoiceOver
             .padding(.vertical, 4)
             .background(Color.clear)
             
@@ -79,7 +81,7 @@ struct DesktopTotemView: View {
                     HStack(spacing: 4) {
                         Image(systemName: alwaysOnTop ? "pin.fill" : "pin")
                             .font(.system(size: 11))
-                        Text(alwaysOnTop ? "Unpin AppStack" : "Pin AppStack")
+                        Text(alwaysOnTop ? "Unpin Desktop Totem" : "Pin Desktop Totem")
                             .font(.system(size: 10, weight: .medium))
                     }
                     .foregroundColor(.white)
@@ -89,8 +91,8 @@ struct DesktopTotemView: View {
                     .cornerRadius(4)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel(alwaysOnTop ? "Unpin AppStack" : "Pin AppStack")
-                .accessibilityHint(alwaysOnTop ? "Allow other windows to cover AppStack" : "Keep AppStack on top of other windows")
+                .accessibilityLabel(alwaysOnTop ? "Unpin Desktop Totem" : "Pin Desktop Totem")
+                .accessibilityHint(alwaysOnTop ? "Allow other windows to cover Desktop Totem" : "Keep Desktop Totem on top of other windows")
                 
                 // Utility buttons
                 HStack(spacing: 10) {
@@ -107,7 +109,7 @@ struct DesktopTotemView: View {
                     
                     // Hide all other apps / clear screen (including current frontmost app)
                     Button(action: {
-                        // Safest system-supported path: make AppStack active,
+                        // Safest system-supported path: make Desktop Totem active,
                         // then ask macOS to hide all other apps.
                         NSApp.activate(ignoringOtherApps: true)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {

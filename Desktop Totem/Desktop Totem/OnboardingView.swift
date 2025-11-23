@@ -13,7 +13,7 @@ struct OnboardingView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text("Welcome to AppStack")
+                Text("Welcome to Desktop Totem")
                     .font(.title2.bold())
                 Spacer()
             }
@@ -38,7 +38,7 @@ struct OnboardingView: View {
                 HStack(alignment: .top, spacing: 8) {
                     Image(systemName: "rectangle.3.offgrid")
                         .foregroundColor(.orange)
-                    Text("Use “Hide others” to clear your screen and keep only AppStack visible.")
+                    Text("Use “Hide others” to clear your screen and keep only Desktop Totem visible.")
                         .font(.footnote)
                 }
                 HStack(alignment: .top, spacing: 8) {

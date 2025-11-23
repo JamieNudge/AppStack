@@ -14,7 +14,7 @@ struct TotemView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // Top cap with AppStack icon
+            // Top cap with Desktop Totem icon
             VStack(spacing: 2) {
                 Text("📚")
                     .font(.system(size: 32))
@@ -59,7 +59,7 @@ struct TotemView: View {
                 .buttonStyle(.plain)
                 .help("Show/Hide Desktop Window")
                 .accessibilityLabel("Toggle desktop window")
-                .accessibilityHint("Show or hide the full AppStack window on the desktop")
+                .accessibilityHint("Show or hide the full Desktop Totem window on the desktop")
                 
                 // Vertical utility buttons (icons only)
                 VStack(alignment: .leading, spacing: 4) {
@@ -76,7 +76,7 @@ struct TotemView: View {
                     }
                     .buttonStyle(.plain)
                     .help("Quit")
-                    .accessibilityLabel("Quit AppStack")
+                    .accessibilityLabel("Quit Desktop Totem")
                     
                     Button(action: { tracker.resetCounts() }) {
                         HStack(spacing: 4) {
@@ -93,7 +93,7 @@ struct TotemView: View {
                     .accessibilityHint("Clear usage counts and restart tracking")
                     
                     Button(action: {
-                        // Try to aggressively hide all regular apps except AppStack,
+                        // Try to aggressively hide all regular apps except Desktop Totem,
                         // and explicitly hide the current frontmost app as well.
                         let thisBundle = Bundle.main.bundleIdentifier
                         let workspace = NSWorkspace.shared
@@ -122,7 +122,7 @@ struct TotemView: View {
                     .buttonStyle(.plain)
                     .help("Hide all other apps")
                     .accessibilityLabel("Hide all other apps")
-                    .accessibilityHint("Clear the screen and keep only AppStack visible")
+                    .accessibilityHint("Clear the screen and keep only Desktop Totem visible")
                     
                     Button(action: { tracker.refresh() }) {
                         HStack(spacing: 4) {

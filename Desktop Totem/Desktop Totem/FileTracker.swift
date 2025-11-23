@@ -233,7 +233,7 @@ class FileTracker: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let targetURL = item.url
             let path = targetURL.path
-            print("🚀 AppStack openFile -> \(item.name) at \(path)")
+            print("🚀 Desktop Totem openFile -> \(item.name) at \(path)")
             
             let config = NSWorkspace.OpenConfiguration()
             config.activates = true
@@ -257,7 +257,7 @@ class FileTracker: ObservableObject {
                     } else {
                         for match in matches {
                             print("🔁 Activating \(match.localizedName ?? item.name)")
-                            match.activate(options: [.activateIgnoringOtherApps, .activateAllWindows])
+                            match.activate(options: [.activateAllWindows])
                         }
                     }
                 }
