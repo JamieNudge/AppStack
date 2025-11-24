@@ -21,8 +21,11 @@ struct DesktopTotemView: View {
         VStack(spacing: 4) {
             // Top cap with Desktop Totem icon (decorative only)
             VStack(spacing: 2) {
-                Text("📚")
-                    .font(.system(size: 46))
+                Image(nsImage: NSApp.applicationIconImage)
+                    .resizable()
+                    .interpolation(.high)
+                    .antialiased(true)
+                    .frame(width: 46, height: 46)
                     .shadow(color: .black.opacity(0.7), radius: 3, x: 0, y: 2)
             }
             .frame(maxWidth: .infinity)
